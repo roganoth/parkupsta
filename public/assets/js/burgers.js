@@ -23,8 +23,6 @@ $(document).ready(function () {
                     "' class='delBurger'>Wipe the plate!</button>")
             }
         };
-
-        var
     });
 
     $(document).on("click", ".eat", function (event) {
@@ -38,13 +36,32 @@ $(document).ready(function () {
         });
     });
 
-    $(document).on("click", "delBurger", function(event){
+    $(document).on("click", "delBurger", function (event) {
         var id = $(this).data("burgid");
 
         $.ajax("/burgers" + id, {
             type: "DELETE"
-        }).then(function() {
+        }).then(function () {
             console.log("deleted id " + id);
+        });
+    });
+
+    $("#addBurger").on("submit", function (event) {
+        event.preventDefault();
+
+        var newBurger = {
+            burger_name: $("#addburger").val().trim(),
+            devoured: false
+        };
+
+        $.ajax("/burgers", {
+            type: "POST",
+            data: JSON.stringify(newBurger),
+            dataType: "json",
+            contentType: "application/json"
+        }).then(function() {
+            console.log("added burger");
+            location.reload();
         });
     });
 })
