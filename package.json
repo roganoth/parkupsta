@@ -4,7 +4,7 @@
   "description": "Burger Homework",
   "main": "server.js",
   "scripts": {
-    "start": "npm run start"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
