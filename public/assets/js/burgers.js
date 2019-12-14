@@ -51,11 +51,12 @@ $(document).ready(function () {
 
     $("#addBurger").on("submit", function (event) {
         event.preventDefault();
-
+        console.log("submit clicked");
         var newBurger = {
-            burger_name: $("#addburger").val().trim(),
+            burger_name: $("#burger").val().trim(),
             devoured: false
         };
+        console.log(newBurger);
 
         $.ajax("/burgers/", {
             type: "POST",
