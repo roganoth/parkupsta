@@ -3,24 +3,26 @@ $(document).ready(function () {
         type: "GET"
     }).then(function (data) {
         var burgs = data.burgers;
-        var len = data.length;
+        var len = data.burgers.length;
 
         var burgs_elem = $("#uneatenBurgers");
         var eatenBurgs_elem = $("#devouredBurgers")
         for (i = 0; i < len; i++) {
-            if (burgs[i].devoured === 0) {
+            if (burgs[i].devoured == 0) {
                 burgs_elem.append(
+                    "<li><p>" +
                     burgs[i].burger_name +
                     "<button data-burgid='" +
                     burgs[i].id +
-                    "' class='eat'>Eat Da Burger!</button>")
+                    "' class='eat'>Eat Da Burger!</button></p></li>")
             }
             else {
                 eatenBurgs_elem.append(
+                    "<li><p>" +
                     burgs[i].burger_name +
                     "<button data-burgid='" +
                     burgs[i].id +
-                    "' class='delBurger'>Wipe the plate!</button>")
+                    "' class='delBurger'>Wipe the plate!</button></p></li>")
             }
         };
     });
@@ -29,10 +31,10 @@ $(document).ready(function () {
         var id = $(this).data("burgid");
 
         $.ajax("/burgers" + id, {
-            type: "UPDATE"
+            type: "PUT"
         }).then(function () {
             console.log("eaten id " + id);
-            location.reload();
+            // location.reload();
         });
     });
 
@@ -43,6 +45,7 @@ $(document).ready(function () {
             type: "DELETE"
         }).then(function () {
             console.log("deleted id " + id);
+            // location.reload();
         });
     });
 
@@ -61,7 +64,7 @@ $(document).ready(function () {
             contentType: "application/json"
         }).then(function() {
             console.log("added burger");
-            location.reload();
+            // location.reload();
         });
     });
 })

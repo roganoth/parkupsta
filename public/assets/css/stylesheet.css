@@ -1,0 +1,9 @@
+#uneatenBurgers {
+    width: 45%;
+    float: left;
+};
+
+#devouredBurgers {
+    width: 45%;
+    float: right;
+}

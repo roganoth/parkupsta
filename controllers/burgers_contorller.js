@@ -14,21 +14,39 @@ router.get("/burgers", function (req, res) {
 
 router.post("/burgers", function (req, res) {
     burgers.createOne([
-        ""
-    ]);
+        "burger_name", "devoured"
+    ], [
+        req.body.burger_name, req.body.devoured
+    ], function (result) {
+        res.json({ id: result.insertId });
+    });
 });
 
 router.put("/burger/:id", function (req, res) {
     var condition = "id = " + req.params.id;
 
     burgers.updateOne({
+        burger_name: req.body.burger_name,
         devoured: true
-    }, function (result) {
+    }, condition, function (result) {
         if (result.changedRows == 0) {
             return res.status(404).end();
         }
         else {
             res.json({ id: req.params.id });
+        }
+    });
+});
+
+router.delete("/burgers/:id", function (req, res) {
+    var condition = "id = " + req.params.id;
+
+    burgers.delete(condition, function (result) {
+        if (result.affectedRows == 0) {
+            return res.status(404).end();
+        }
+        else {
+            res.status(200).end();
         }
     });
 });
