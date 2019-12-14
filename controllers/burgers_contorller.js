@@ -32,3 +32,5 @@ router.put("/burger/:id", function (req, res) {
         }
     });
 });
+
+module.exports = router;
