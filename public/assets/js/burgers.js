@@ -11,7 +11,7 @@ $(document).ready(function () {
             if (burgs[i].devoured == 0) {
                 burgs_elem.append(
                     "<li><p>" +
-                    burgs[i].burger_name +
+                    burgs[i].burger_name + " " +
                     "<button data-burgid='" +
                     burgs[i].id +
                     "' class='eat'>Eat Da Burger!</button></p></li>")
@@ -19,7 +19,7 @@ $(document).ready(function () {
             else {
                 eatenBurgs_elem.append(
                     "<li><p>" +
-                    burgs[i].burger_name +
+                    burgs[i].burger_name + " " +
                     "<button data-burgid='" +
                     burgs[i].id +
                     "' class='delBurger'>Wipe the plate!</button></p></li>")
@@ -38,14 +38,14 @@ $(document).ready(function () {
         });
     });
 
-    $(document).on("click", "delBurger", function (event) {
+    $(document).on("click", ".delBurger", function (event) {
         var id = $(this).data("burgid");
 
         $.ajax("/burgers/" + id, {
             type: "DELETE"
         }).then(function () {
             console.log("deleted id " + id);
-            // location.reload();
+            location.reload();
         });
     });
 
@@ -57,14 +57,14 @@ $(document).ready(function () {
             devoured: false
         };
 
-        $.ajax("/burgers", {
+        $.ajax("/burgers/", {
             type: "POST",
             data: JSON.stringify(newBurger),
             dataType: "json",
             contentType: "application/json"
-        }).then(function() {
+        }).then(function () {
             console.log("added burger");
-            // location.reload();
+            location.reload();
         });
     });
 })
