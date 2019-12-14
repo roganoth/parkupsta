@@ -1,2 +1,8 @@
 # parkupsta
-Burger Homeworkd
+Burger Homework
+
+This assignment asked us to create a web page which needed a server to run api and html routes in order to simulate ordering, eating, and then deleting burgers. To go through the CRUD process: the order creates a burger on the database, the page load reads the records on the database and prints them to the page via the client-side js, eating the burger updates the database to change the boolean of devoured from false to true (then reloads the page printing it to the appropriate div), and deleting it deletes the record from the database.
+
+This assignment was the first full-stack web development that we had to create on our own. It was challenging having the different components not only communicate with eachother correctly, but also to keep the paths straight in my head. This lead to a number of easy, tiny errors. I was able to find them and fix them and the page is now working correctly. 
+
+If I were to further develope this I would like to add sounds on the click of eating and deleting the burgers. Also make it so that when a burger is deleted it is added to a different table in the database of previously eaten/ordered, perhaps a modal on delete to add a review of the burger and have that displayed on another page or elsewhere on the page. If developed in this direction this could be applied to restaurant apps on a per user basis to keep track of individual items ordered rather than the overall establishment as in grubhub/seamless.

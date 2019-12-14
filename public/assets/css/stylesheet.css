@@ -1,9 +1,24 @@
 #uneatenBurgers {
     width: 45%;
     float: left;
+    font-weight: bold;
 };
 
 #devouredBurgers {
     width: 45%;
     float: right;
-}
+    font-weight: bold;
+};
+
+body {
+    background-color: red;
+    color: green;
+};
+
+.delBurger {
+    font-weight: bold;
+};
+
+.eat {
+    font-weight: bold;
+};
