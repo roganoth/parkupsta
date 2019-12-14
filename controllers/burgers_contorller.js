@@ -1,6 +1,7 @@
 var express = require("express");
 var burgers = require("../models/burgers.js");
 var router = express.Router();
+var path = require("path")
 
 router.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "public/index.html"));
@@ -22,11 +23,10 @@ router.post("/burgers", function (req, res) {
     });
 });
 
-router.put("/burger/:id", function (req, res) {
+router.put("/burgers/:id", function (req, res) {
     var condition = "id = " + req.params.id;
 
     burgers.updateOne({
-        burger_name: req.body.burger_name,
         devoured: true
     }, condition, function (result) {
         if (result.changedRows == 0) {

@@ -30,18 +30,18 @@ $(document).ready(function () {
     $(document).on("click", ".eat", function (event) {
         var id = $(this).data("burgid");
 
-        $.ajax("/burgers" + id, {
+        $.ajax("/burgers/" + id, {
             type: "PUT"
         }).then(function () {
             console.log("eaten id " + id);
-            // location.reload();
+            location.reload();
         });
     });
 
     $(document).on("click", "delBurger", function (event) {
         var id = $(this).data("burgid");
 
-        $.ajax("/burgers" + id, {
+        $.ajax("/burgers/" + id, {
             type: "DELETE"
         }).then(function () {
             console.log("deleted id " + id);
